@@ -6,46 +6,53 @@
   <title>project-newsapp</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="style/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="vue-app">
     <div class="jumbotron jumbotron-fluid">
-      <div class="container ml-4">
-        <h1 class="display-4">News</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      <div class="container ml-5 container-bg">
+        <h1 class="display-4 my-h1-class">{{name}}</h1>
+        <p class="lead">A place to read what YOU want to read.</p>
         <div class="newsBar">
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Type keyword or Date or Source  or language or domain name to search">
-          <button type="button" class="btn btn-dark btn-lg">Search</button>
+          <input type="text" 
+                 class="form-control" 
+                 aria-label="Sizing example input" 
+                 aria-describedby="inputGroup-sizing-lg" 
+                 placeholder="Type keyword or Date or Source  or language or domain name to search" 
+                 v-on:input="onInput"
+                 v-bind:value="name">
+          <button v-on:click="changeName" type="button" class="btn btn-dark btn-lg mt-2">Search</button>
         </div>
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 ml-5">
       <div class="col mb-4" >
-        <div class="card text-white bg-warning mb-3 world" style="max-width: 18rem;">
+        <div class="card text-white mb-3 world" style="max-width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">World News</h5>
-            <p class="card-text">From every corner around the World. </p>
+            <h5 class="card-title deepshd">World</h5>
+            <p class="card-text deepshd">News from every corner around the World. </p>
           </div>
         </div>
       </div>
-      <div class="col mb-4 tech">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+      <div class="col mb-4">
+        <div class="card text-white mb-3 tech" style="max-width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Technologies News</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
+            <h5 class="card-title">Technologies</h5>
+            <p class="card-text">In-depth coverage of technology news issues and events.</p>
           </div>
         </div>
       </div>
-      <div class="col mb-4 science">
-        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+      <div class="col mb-4">
+        <div class="card text-white mb-3 science" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Science</h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
           </div>
         </div>
       </div>
-      <div class="col mb-4 entertainment">
-        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+      <div class="col mb-4">
+        <div class="card text-white mb-3 entertainment" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Entertainment</h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -54,35 +61,35 @@
       </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 ml-5">
-      <div class="col mb-4 sports">
-        <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+      <div class="col mb-4">
+        <div class="card text-white mb-3 sport" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Sports</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
+            <p class="card-text">With analysis, features, photos and videos covering on sports news. </p>
           </div>
         </div>
       </div>
-      <div class="col mb-4 fashion">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+      <div class="col mb-4">
+        <div class="card text-white mb-3 fashion" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Fashion</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. </p>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in. </p>
           </div>
         </div>
       </div>
-      <div class="col mb-4 business">
-        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+      <div class="col mb-4">
+        <div class="card text-white mb-3 business" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Business</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text">This is a longer card with supporting text below.</p>
           </div>
         </div>
       </div>
-      <div class="col mb-4 politic">
-        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+      <div class="col mb-4">
+        <div class="card text-white mb-3 politics" style="max-width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Politic</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <h5 class="card-title">Politics</h5>
+            <p class="card-text">This is a longer card with supporting text below.</p>
           </div>
         </div>
       </div>

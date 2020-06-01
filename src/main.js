@@ -1,30 +1,63 @@
-const app =  new Vue ({
-  el: '#vue-app',
-});
-
 var url = 'http://newsapi.org/v2/everything?' +
           'q=Apple&' +
-          'from=2020-05-30&' +
+          'from=2020-06-01&' +
           'sortBy=popularity&' +
-          'apiKey= 14c0ac661fc44e2a9ee0f9c0c9af7ac4';
+          'apiKey=14c0ac661fc44e2a9ee0f9c0c9af7ac4';
 
 var req = new Request(url);
 
-fetch(req)
-    .then(function(response) {
-        console.log(response.json());
-    })
+const app =  new Vue ({
+  el: '#vue-app',
+  data: {
+    name: "Tomas",
+  },
 
-fetch();
+  methods: {
+    changeName() {
+      this.name = "Nicole"
+    },
 
-    // newsapi.v2.everything({
-    //   q: 'bitcoin',
-    //   sources: 'bbc-news,the-verge',
-    //   domains: 'bbc.co.uk, techcrunch.com',
-    //   from: '2017-12-01',
-    //   to: '2017-12-12',
-    //   language: 'en',
-    //   sortBy: 'relevancy',
-    //   page: 2
-    // }).then(response => {
-    //   console.log(response);
+    onInput(event) {
+      console.log(event)
+    }
+  },
+
+  mounted: function() {
+    fetch('http://newsapi.org/v2/everything?')
+      .then(response => response.json())
+      .then(articalesResponse => {
+        this.articles = articalesResponse.articles
+        console.log(response);
+      })
+      
+  },
+})
+
+
+
+// // mounted: function() {
+// //   fetch('http://newsapi.org/v2/everything?')
+// //     .then(response => response.json())
+// //     .then(articalesResponse => {
+// //       this.articles = articalesResponse.articles
+// //     })
+// // }
+ 
+
+// var url = 'http://newsapi.org/v2/everything?' +
+//           'q=Apple&' +
+//           'from=2020-06-01&' +
+//           'sortBy=popularity&' +
+//           'apiKey=14c0ac661fc44e2a9ee0f9c0c9af7ac4';
+
+// var req = new Request(url);
+
+// fetch(req, {mode: "no-cors"}) 
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(response) {
+//       console.log(response);
+//     })
+
+// fetch("");
