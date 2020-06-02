@@ -9,25 +9,7 @@
 const app =  new Vue ({
   el: '#vue-app',
   data: {
-    name: "Tomas",
-    articles:  [
-      {
-        title: 'tech',
-        date: '31.05.2020',
-        author: 'andrew patton'
-      },
-      {
-        title: 'world',
-        date: '20.05.2020',
-        author: 'andrew patton'
-      },
-      {
-        title: 'weather',
-        date: '28.04.2020',
-        author: 'andrew patton'
-      }
-
-    ]
+    articles: []
   },
 
   methods: {
@@ -40,8 +22,8 @@ const app =  new Vue ({
       this.name = event.target.value;
     },
 
-    showInfo(name) {
-      console.log(name);
+    showInfo(articles) {
+      console.log(articles);
     }
   },
 
@@ -55,11 +37,11 @@ const app =  new Vue ({
     var req = new Request(url);
 
     fetch(req) 
-      .then(response => response.json())
-      .then(json => console.log(json))
+    .then(response => response.json())
+    .then(articlesResponse => {
+      this.articles = articlesResponse;
+    })
     
-
-fetch("");
     // var url = 'http://newsapi.org/v2/everything?' +
     //       'q=Apple&' +
     //       'from=2020-06-01&' +
@@ -74,8 +56,9 @@ fetch("");
 //         this.articles = articlesResponse.articles
 //         console.log(response);
 //       })
+fetch("")
       
-  },
+  }
 })
 
 

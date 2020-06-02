@@ -12,7 +12,7 @@
   <div id="vue-app">
     <div class="jumbotron jumbotron-fluid">
       <div class="container ml-5 container-bg">
-        <h1 class="display-4 my-h1-class">hello{{name}}</h1>
+        <h1 class="display-4 my-h1-class">News Finder</h1>
         <p class="lead">A place to read what YOU want to read..</p>
         <div class="newsBar">
           <input type="text" 
@@ -21,9 +21,24 @@
                  aria-describedby="inputGroup-sizing-lg" 
                  placeholder="Type keywords of news that you are interested." 
                  v-on:input="onInput"
-                 v-bind:value="name">
-          <button v-on:click="showInfo(articles.name)" type="button" class="btn btn-dark btn-lg mt-2">Search</button>
-          <div>{{articles}}</div>
+                 v-bind:value="articles">
+          <button v-on:click="showInfo(articles)" type="button" class="btn btn-dark btn-lg mt-2">Search</button>
+          <!-- <div class="card" style="width: 58em;" v-for="article in articles">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+            </div>
+          </div> -->
+          <div class="card" v-for="article in articles">
+            <div class="card-body">
+              {{article.articles}}
+            </div>
+          </div>
+          <ul>
+            <li v-for="article in articles">
+              {{article}}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
