@@ -12,17 +12,18 @@
   <div id="vue-app">
     <div class="jumbotron jumbotron-fluid">
       <div class="container ml-5 container-bg">
-        <h1 class="display-4 my-h1-class">{{name}}</h1>
-        <p class="lead">A place to read what YOU want to read.</p>
+        <h1 class="display-4 my-h1-class">hello{{name}}</h1>
+        <p class="lead">A place to read what YOU want to read..</p>
         <div class="newsBar">
           <input type="text" 
                  class="form-control" 
                  aria-label="Sizing example input" 
                  aria-describedby="inputGroup-sizing-lg" 
-                 placeholder="Type keyword or Date or Source  or language or domain name to search" 
+                 placeholder="Type keywords of news that you are interested." 
                  v-on:input="onInput"
                  v-bind:value="name">
-          <button v-on:click="changeName" type="button" class="btn btn-dark btn-lg mt-2">Search</button>
+          <button v-on:click="showInfo(articles.name)" type="button" class="btn btn-dark btn-lg mt-2">Search</button>
+          <div>{{articles}}</div>
         </div>
       </div>
     </div>
@@ -39,7 +40,7 @@
         <div class="card text-white mb-3 tech" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Technologies</h5>
-            <p class="card-text">In-depth coverage of technology news issues and events.</p>
+            <p class="card-text">In-depth coverage of tech issues and events.</p>
           </div>
         </div>
       </div>
@@ -47,7 +48,7 @@
         <div class="card text-white mb-3 science" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Science</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text">This is a longer card with supporting text below.</p>
           </div>
         </div>
       </div>
@@ -55,7 +56,7 @@
         <div class="card text-white mb-3 entertainment" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Entertainment</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text">This is a longer card with supporting text below.</p>
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@
         <div class="card text-white mb-3 sport" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Sports</h5>
-            <p class="card-text">With analysis, features, photos and videos covering on sports news. </p>
+            <p class="card-text"> full covering ondga dgergs tgdsfgf gdfg sports. </p>
           </div>
         </div>
       </div>
@@ -73,7 +74,7 @@
         <div class="card text-white mb-3 fashion" style="max-width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Fashion</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in. </p>
+            <p class="card-text">This is a longer card with supporting text below. </p>
           </div>
         </div>
       </div>
