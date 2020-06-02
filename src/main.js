@@ -3,29 +3,25 @@
 const app =  new Vue ({
   el: '#vue-app',
   data: {
+    searchValue: 'apple',
     articles: []
   },
 
   methods: {
-    changeName() {
-      this.name = "Nicole"
-    },
 
-    onInput(event) {
-      console.log(event.target.value);
-      this.name = event.target.value;
-    },
-
-    showInfo(articles) {
-      console.log(articles);
+    filteredArticles() {
+      return this.articles.filter((article) => {
+        return article == this.searchValue;
+      });
     }
   },
 
   mounted: function() {
+    
     var url = 'http://newsapi.org/v2/everything?' +
-          'q=Apple&' +
+          'q='+this.searchValue+'&' +
           'from=2020-06-01&' +
-          'sortBy=popularity&' +
+          'sortBy=relevancy&' +
           'apiKey=14c0ac661fc44e2a9ee0f9c0c9af7ac4';
 
     var req = new Request(url);
@@ -35,9 +31,24 @@ const app =  new Vue ({
     .then(articlesResponse => {
       this.articles = articlesResponse.articles;
     })
-
-console.log(fetch(""));
       
+  },
+
+  // computed:{
+    // filteredArticles: function() {
+    //   return this.articles.filter((article) => {
+    //     return article == this.searchValue;
+        // let lowerArticle = article.toLowerCase();
+        // let lowerSearchValue = this.searchValue.toLowerCase();
+        // return lowerArticle.includes(lowerSearchValue);
+    //   });
+    // }
+  // }
+
+  watch: {
+    searchValue() {
+      this.filteredArticles();
+    }
   }
 })
 

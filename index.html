@@ -1,126 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>project-newsapp</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style/index.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div id="vue-app">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container ml-5 container-bg">
-        <h1 class="display-4 my-h1-class font-weight-bold">News Finder</h1>
-        <p class="lead font-weight-bold">A place to read WHAT YOU WANT TO READ...</p>
-        <div class="newsBar">
-          <input type="text" 
-                 class="form-control" 
-                 aria-label="Sizing example input" 
-                 aria-describedby="inputGroup-sizing-lg" 
-                 placeholder="Type keywords of news that you are interested." 
-                 v-on:input="onInput"
-                 v-bind:value="articles">
-          <button v-on:click="showInfo(articles)" type="button" class="btn btn-dark btn-lg mt-2">Search</button>
-          <!-- <div class="card" style="width: 58em;" v-for="article in articles">
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>project-newsapp</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="vue-app">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container container-bg">
+          <h1 class="display-4 my-h1-class font-weight-bold">News Finder</h1>
+          <p class="lead font-weight-bold">
+            A place to read WHAT YOU WANT TO READ...
+          </p>
+          <div class="newsBar">
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-lg"
+              placeholder="Type keywords of news that you are interested."
+              v-model="searchValue"
+            />
+            <button
+              @click="filteredArticles()"
+              type="button"
+              class="btn btn-dark btn-lg mt-2"
+            >
+              Search
+            </button>
+            <!-- <div class="card" v-for="article in articles">
+              <div class="card-body">
+                <img v-bind:src="article.urlToImage" />
+                <h5 class="card-title font-weight-bold">{{article.title}}</h5>
+                <h6 class="card-subtitle font-italic">
+                  <small
+                    >posted on {{article.publishedAt}} by
+                    {{article.author}}</small
+                  >
+                </h6>
+                <article class="card-text">{{article.content}}</article>
+              </div>
+            </div> -->
+            <div class="card mb-3" style="max-width: 1200px;" v-for="article in articles">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img v-bind:src="article.urlToImage" class="card-img" alt="The image is related to article below.">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title font-weight-bold">{{article.title}}</h5>
+                    <h6 class="card-text font-italic">
+                      <small
+                        >posted on {{article.publishedAt}} by
+                        {{article.author}}</small
+                      ></h6>
+                    <article class="card-text">{{article.content}}</article>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div> -->
-          <div class="card" v-for="article in articles">
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 ml-5">
+        <div class="col mb-4">
+          <div class="card text-white mb-3 world" style="max-width: 18rem;">
             <div class="card-body">
-              <!-- {{article}} -->
-            <h5 class="card-title font-weight-bold">{{article.title}}</h5>
-            <h6 class="card-subtitle font-italic"><small>posted on {{article.publishedAt}} by {{article.author}}</small></h6>
-            <p class="card-text ">{{article.description}}</p>
+              <h5 class="card-title deepshd">World</h5>
+              <p class="card-text deepshd">
+                News from every corner around the World.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-4">
+          <div class="card text-white mb-3 tech" style="max-width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Technologies</h5>
+              <p class="card-text">
+                In-depth coverage of tech issues and events.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-4">
+          <div class="card text-white mb-3 science" style="max-width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Science</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-4">
+          <div
+            class="card text-white mb-3 entertainment"
+            style="max-width: 18rem;"
+          >
+            <div class="card-body">
+              <h5 class="card-title">Entertainment</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below.
+              </p>
             </div>
           </div>
         </div>
       </div>
+      <div class="row row-cols-1 row-cols-md-2 ml-5">
+        <div class="col mb-4">
+          <div class="card text-white mb-3 sport" style="max-width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Sports</h5>
+              <p class="card-text">
+                full covering ondga dgergs tgdsfgf gdfg sports.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-4">
+          <div class="card text-white mb-3 fashion" style="max-width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Fashion</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-4">
+          <div class="card text-white mb-3 business" style="max-width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Business</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-4">
+          <div class="card text-white mb-3 politics" style="max-width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Politics</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <h6></h6>
+      </footer>
     </div>
-    <div class="row row-cols-1 row-cols-md-2 ml-5">
-      <div class="col mb-4" >
-        <div class="card text-white mb-3 world" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title deepshd">World</h5>
-            <p class="card-text deepshd">News from every corner around the World. </p>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card text-white mb-3 tech" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Technologies</h5>
-            <p class="card-text">In-depth coverage of tech issues and events.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card text-white mb-3 science" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Science</h5>
-            <p class="card-text">This is a longer card with supporting text below.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card text-white mb-3 entertainment" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Entertainment</h5>
-            <p class="card-text">This is a longer card with supporting text below.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row row-cols-1 row-cols-md-2 ml-5">
-      <div class="col mb-4">
-        <div class="card text-white mb-3 sport" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Sports</h5>
-            <p class="card-text"> full covering ondga dgergs tgdsfgf gdfg sports. </p>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card text-white mb-3 fashion" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Fashion</h5>
-            <p class="card-text">This is a longer card with supporting text below. </p>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card text-white mb-3 business" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Business</h5>
-            <p class="card-text">This is a longer card with supporting text below.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col mb-4">
-        <div class="card text-white mb-3 politics" style="max-width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Politics</h5>
-            <p class="card-text">This is a longer card with supporting text below.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <h6></h6>
-    </footer>
-  </div>
-  <!-- https://cors-anywhere.herokuapp.com/https://www.your-api.com -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="src/main.js"></script>
-</body>
+    <!-- https://cors-anywhere.herokuapp.com/https://www.your-api.com -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="src/main.js"></script>
+  </body>
 </html>
-   
-
-  
-      
-      
-      
-      
