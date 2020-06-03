@@ -33,8 +33,8 @@
               placeholder="Type here to find news..."
               v-model="searchWord"
             />
+            <!-- Search button -->
             <button
-             
               @click="fetchSearchNews"
               type="button"
               class="btn btn-warning btn-lg mt-2 mb-2"
@@ -63,6 +63,7 @@
           </div>
         </div>
       </div>
+      <!-- category blocks -->
       <div class="row row-cols-1 row-cols-md-2 ml-5">
         <div class="col mb-4">
           <div class="card text-white mb-3 world shadow rounded" style="max-width: 18rem;">
