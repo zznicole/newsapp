@@ -30,33 +30,20 @@
               class="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-lg"
-              placeholder="Type keywords of news that you are interested."
-              v-model="searchValue"
+              placeholder="Type here to find news..."
+              v-model="searchWord"
             />
             <button
               @click="filteredArticles()"
               type="button"
-              class="btn btn-dark btn-lg mt-2"
+              class="btn btn-warning btn-lg mt-2 mb-2"
             >
               Search
             </button>
-            <!-- <div class="card" v-for="article in articles">
-              <div class="card-body">
-                <img v-bind:src="article.urlToImage" />
-                <h5 class="card-title font-weight-bold">{{article.title}}</h5>
-                <h6 class="card-subtitle font-italic">
-                  <small
-                    >posted on {{article.publishedAt}} by
-                    {{article.author}}</small
-                  >
-                </h6>
-                <article class="card-text">{{article.content}}</article>
-              </div>
-            </div> -->
-            <div class="card mb-3" style="max-width: 1200px;" v-for="article in articles">
+            <div class="card mb-3 mt-5" style="max-width: 1200px;" v-for="article in articles">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img v-bind:src="article.urlToImage" class="card-img" alt="The image is related to article below.">
+                  <img :src="article.urlToImage" class="card-img" alt="The image is related to article below.">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -66,7 +53,8 @@
                         >posted on {{article.publishedAt}} by
                         {{article.author}}</small
                       ></h6>
-                    <article class="card-text">{{article.content}}</article>
+                    <article class="card-text">{{article.description}}</article>
+                    <a :href="article.url" class="card-link">read more...</a>
                   </div>
                 </div>
               </div>
@@ -165,7 +153,6 @@
         <h6></h6>
       </footer>
     </div>
-    <!-- https://cors-anywhere.herokuapp.com/https://www.your-api.com -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="src/main.js"></script>
   </body>
