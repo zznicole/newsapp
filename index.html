@@ -24,7 +24,7 @@
           <p class="lead font-weight-bold">
             A place to read WHAT YOU WANT TO READ...
           </p>
-          <div class="newsBar">
+          <div class="newsBar" @submit.prevent="fetchSearchNews">
             <input
               type="text"
               class="form-control"
@@ -34,16 +34,17 @@
               v-model="searchWord"
             />
             <button
-              @click="filteredArticles()"
+              v-if="!isBusy"
+              @click="fetchSearchNews"
               type="button"
               class="btn btn-warning btn-lg mt-2 mb-2"
             >
               Search
             </button>
-            <div class="card mb-3 mt-5" style="max-width: 1200px;" v-for="article in articles">
+            <div class="card mb-3 mt-5" style="max-width: 1200px;" v-for="(article,index) in articles" :key="index">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img :src="article.urlToImage" class="card-img" alt="The image is related to article below.">
+                  <img v-if="article.urlToImage" :src="article.urlToImage" class="card-img" alt="The image is related to article below.">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -64,7 +65,7 @@
       </div>
       <div class="row row-cols-1 row-cols-md-2 ml-5">
         <div class="col mb-4">
-          <div class="card text-white mb-3 world" style="max-width: 18rem;">
+          <div class="card text-white mb-3 world shadow rounded" style="max-width: 18rem;">
             <div class="card-body">
               <h5 class="card-title deepshd">World</h5>
               <p class="card-text deepshd">
