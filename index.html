@@ -27,21 +27,21 @@
           <div class="newsBar" @submit.prevent="fetchSearchNews">
             <input
               type="text"
-              class="form-control"
+              class="form-control input-lg"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-lg"
               placeholder="Type here to find news..."
               v-model="searchWord"
             />
             <button
-              v-if="!isBusy"
+             
               @click="fetchSearchNews"
               type="button"
               class="btn btn-warning btn-lg mt-2 mb-2"
             >
               Search
             </button>
-            <div class="card mb-3 mt-5" style="max-width: 1200px;" v-for="(article,index) in articles" :key="index">
+            <div v-if="fetchSearchNews" class="card mb-3 mt-5" style="max-width: 1200px;" v-for="(article,index) in articles" :key="index">
               <div class="row no-gutters">
                 <div class="col-md-4">
                   <img v-if="article.urlToImage" :src="article.urlToImage" class="card-img" alt="The image is related to article below.">
@@ -55,7 +55,7 @@
                         {{article.author}}</small
                       ></h6>
                     <article class="card-text">{{article.description}}</article>
-                    <a :href="article.url" class="card-link">read more...</a>
+                    <a :href="article.url" class="card-link">More Info...</a>
                   </div>
                 </div>
               </div>
@@ -66,11 +66,17 @@
       <div class="row row-cols-1 row-cols-md-2 ml-5">
         <div class="col mb-4">
           <div class="card text-white mb-3 world shadow rounded" style="max-width: 18rem;">
-            <div class="card-body">
+            <div class="card-body ">
               <h5 class="card-title deepshd">World</h5>
               <p class="card-text deepshd">
                 News from every corner around the World.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>
@@ -78,9 +84,15 @@
           <div class="card text-white mb-3 tech" style="max-width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Technologies</h5>
-              <p class="card-text">
+              <p class="card-text"> 
                 In-depth coverage of tech issues and events.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>
@@ -91,6 +103,12 @@
               <p class="card-text">
                 This is a longer card with supporting text below.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>
@@ -104,6 +122,12 @@
               <p class="card-text">
                 This is a longer card with supporting text below.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>
@@ -116,6 +140,12 @@
               <p class="card-text">
                 full covering ondga dgergs tgdsfgf gdfg sports.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>
@@ -126,6 +156,12 @@
               <p class="card-text">
                 This is a longer card with supporting text below.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>
@@ -136,6 +172,12 @@
               <p class="card-text">
                 This is a longer card with supporting text below.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>
@@ -146,6 +188,12 @@
               <p class="card-text">
                 This is a longer card with supporting text below.
               </p>
+              <button
+              type="button"
+              class="btn btn-light btn-sm mt-2 mb-2"
+            >
+              read more..
+            </button>
             </div>
           </div>
         </div>

@@ -10,17 +10,15 @@ const app = new Vue({
     searchWord: "",
     maxPerPage: 20,
     articles: [],
+    category: "",
+    language: "",
+
   },
 
   methods: {
-    // onInput(event) {
-    //   console.log(event.target);
-    // },
-
-    // toRequest() {
-    //   this.resetData();
-    //   this.fetchData();
-    // },
+    onInput(event) {
+      console.log(event.target);
+    },
 
     resetData() {
       this.currentPage = 1;
@@ -65,43 +63,18 @@ const app = new Vue({
         .then((response) => response.json())
         .then((articlesResponse) => {
           this.articles = articlesResponse.articles;
-          //   });
-    
-          // this.totalResults = articlesResponse.totalResults;
-          // articlesResponse.articles.forEach((element) => {
-          //   this.articles.push(element);
-          // });
+      
           this.isBusy = false;
           this.showloader = false;
         })
         .catch((error) => {
           console.log(error);
         });
-
-      // let req = new Request(url);
-
-      // fetch(url)
-      //   .then((response) => response.json())
-      //   .then((articlesResponse) => {
-      //     this.articles = articlesResponse.articles;
-      //   })
-
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
     },
   },
 
-  c() {
+  Mounted() {
     this.fetchtTopNews();
   },
-  // computed:{
-  // filteredArticles: function() {
-  //   return this.articles.filter((article) => {
-  //     return article == this.searchValue;
-  // let lowerArticle = article.toLowerCase();
-  // let lowerSearchValue = this.searchValue.toLowerCase();
-  // return lowerArticle.includes(lowerSearchValue);
-  //   });
-  //
+
 });
