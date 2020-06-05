@@ -24,6 +24,7 @@
           <p class="lead font-weight-bold">
             A place to read WHAT YOU WANT TO READ...
           </p>
+<!-- Search bar -->
           <div class="newsBar" @submit.prevent="fetchSearchNews">
             <input
               type="text"
@@ -33,7 +34,6 @@
               placeholder="Type here to find news..."
               v-model="searchWord"
             />
-            <!-- Search button -->
             <button
               @click="fetchSearchNews"
               type="button"
@@ -41,6 +41,42 @@
             >
               Search
             </button>
+<!-- dropdowns  -->
+            <div class="input-group" id="input-group"></div>
+              <div class="input-group">
+                <select class="custom-select" id="inputGroupSelect01" aria-label="Example select with button addon">
+                  <option selected>Select a Language...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button">Button</button>
+                </div>
+              </div>
+              <div class="input-group">
+                <select class="custom-select" id="inputGroupSelect02" aria-label="Example select with button addon">
+                  <option selected>Select a Catergory...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button">Button</button>
+                </div>
+              </div>
+              <div class="input-group">
+                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                  <option selected>Select a Country...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button">Button</button>
+                </div>
+              </div>
+            </div>
             <div v-if="fetchSearchNews" class="card mb-3 mt-5" style="max-width: 1200px;" v-for="(article,index) in articles" :key="index">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -63,7 +99,7 @@
           </div>
         </div>
       </div>
-      <!-- category blocks -->
+<!-- category blocks -->
       <div class="row row-cols-1 row-cols-md-2 ml-5">
         <div class="col mb-4">
           <div class="card text-white mb-3 world shadow rounded" style="max-width: 18rem;">
@@ -199,10 +235,13 @@
           </div>
         </div>
       </div>
+<!-- footer -->
       <footer>
         <h6></h6>
       </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.0/cjs/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="src/main.js"></script>
   </body>

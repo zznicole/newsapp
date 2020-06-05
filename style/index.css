@@ -66,4 +66,12 @@
   cursor: pointer;
   text-shadow: 2px 2px 2px #000000;
 }
+
+#input-group {
+  display: flexbox;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
 /*# sourceMappingURL=index.css.map */

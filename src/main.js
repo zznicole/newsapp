@@ -12,7 +12,7 @@ const app = new Vue({
     articles: [],
     category: "",
     language: "",
-
+    country:"",
   },
 
   methods: {
@@ -34,7 +34,7 @@ const app = new Vue({
           this.maxPerPage +
           "&apiKey=" +
           apiKey;
-        this.isBusy = true;
+        // this.isBusy = true;
 
         this.resetData();
         this.fetchData();
@@ -50,7 +50,7 @@ const app = new Vue({
         this.maxPerPage +
         "&apiKey=" +
         apiKey;
-      this.isBusy = true;
+      // this.isBusy = true;
       this.searchWord = "";
 
       this.resetData();
