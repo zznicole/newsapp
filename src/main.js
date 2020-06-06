@@ -1,18 +1,19 @@
-let apiKey = "14c0ac661fc44e2a9ee0f9c0c9af7ac4";
+let apiKey = '14c0ac661fc44e2a9ee0f9c0c9af7ac4';
 
 const app = new Vue({
   el: "#vue-app",
   data: {
-    apiUrl: "",
-    isBusy: false,
-    showloader: false,
+    apiUrl: '',
     currentPage: 1,
-    searchWord: "",
+    searchWord: '',
     maxPerPage: 20,
     articles: [],
-    category: "",
-    language: "",
-    country:"",
+    categories: [],
+    languages: [],
+    countries: [],
+    worldNews: [],
+    techNews: [],
+    scienceNews: [],
   },
 
   methods: {
@@ -25,8 +26,9 @@ const app = new Vue({
       this.articles = [];
     },
 
+//input search
     fetchSearchNews() {
-      if (this.searchWord !== "") {
+      if (this.searchWord !== '') {
         this.apiUrl =
           "http://newsapi.org/v2/everything?q=" +
           this.searchWord +
@@ -34,7 +36,6 @@ const app = new Vue({
           this.maxPerPage +
           "&apiKey=" +
           apiKey;
-        // this.isBusy = true;
 
         this.resetData();
         this.fetchData();
@@ -42,7 +43,25 @@ const app = new Vue({
         this.fetchTopNews();
       }
     },
+//dropdown selected news
 
+//tech news
+
+    fetchTechNews() {
+      this.apiUrl =
+        "http://newsapi.org/v2/everything?q=" +
+        "technology" +
+        "&apiKey=" +
+        apiKey;
+      this.techNews = '';
+
+      this.resetData();
+      this.fetchData();
+      console.log(this.techNews);
+    },
+  
+    
+//top news
     fetchTopNews() {
       this.apiUrl =
         "http://newsapi.org/v2/top-headlines?" +
@@ -50,8 +69,7 @@ const app = new Vue({
         this.maxPerPage +
         "&apiKey=" +
         apiKey;
-      // this.isBusy = true;
-      this.searchWord = "";
+      this.searchWord = '';
 
       this.resetData();
       this.fetchData();
@@ -63,18 +81,20 @@ const app = new Vue({
         .then((response) => response.json())
         .then((articlesResponse) => {
           this.articles = articlesResponse.articles;
-      
-          this.isBusy = false;
-          this.showloader = false;
         })
         .catch((error) => {
           console.log(error);
         });
     },
+
+    fetchLanugage(){
+      this.language = articlesResponse.languages;
+    }
   },
 
-  Mounted() {
+  mounted() {
     this.fetchtTopNews();
   },
+
 
 });

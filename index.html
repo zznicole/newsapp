@@ -31,7 +31,7 @@
               class="form-control input-lg"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-lg"
-              placeholder="Type here to find news..."
+              placeholder="Type here to find news direct..."
               v-model="searchWord"
             />
             <button
@@ -41,42 +41,50 @@
             >
               Search
             </button>
+          </div>
+          
+          
 <!-- dropdowns  -->
-            <div class="input-group" id="input-group"></div>
+            <div class="input-groupb d-flex flex-row" id="input-group"></div>
               <div class="input-group">
-                <select class="custom-select" id="inputGroupSelect01" aria-label="Example select with button addon">
-                  <option selected>Select a Language...</option>
-                  <option value="1">One</option>
+                <select class="custom-select" id="inputGroupSelect01"  v-mode="category">
+                  <option selected>Select a category...</option>
+                  <option value="1">World</option>
+                  <option value="2">Technologies</option>
+                  <option value="3">Science</option>
+                  <option value="4">Sports</option>
+                  <option value="5">Fashion</option>
+                  <option value="6">Business</option>
+                  <option value="6">Politics</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <select class="custom-select" id="inputGroupSelect02"  v-mode="language">
+                  <option selected >Select a Language...</option>
+                  <option value="1" v-for="language in languages"></option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button">Button</button>
-                </div>
               </div>
               <div class="input-group">
-                <select class="custom-select" id="inputGroupSelect02" aria-label="Example select with button addon">
-                  <option selected>Select a Catergory...</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button">Button</button>
-                </div>
-              </div>
-              <div class="input-group">
-                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <select class="custom-select" id="inputGroupSelect03"  v-mode="Country">
                   <option selected>Select a Country...</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button">Button</button>
-                </div>
               </div>
-            </div>
+              <div class="input-group-append">
+                <button
+                @click="fetchSearchNews"
+                type="button"
+                class="btn btn-warning btn-lg mt-2 mb-2"
+                >
+                Search
+                </button>
+              </div>
+            </div>         
+<!-- search result display -->
             <div v-if="fetchSearchNews" class="card mb-3 mt-5" style="max-width: 1200px;" v-for="(article,index) in articles" :key="index">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -98,7 +106,6 @@
             </div>
           </div>
         </div>
-      </div>
 <!-- category blocks -->
       <div class="row row-cols-1 row-cols-md-2 ml-5">
         <div class="col mb-4">
@@ -110,6 +117,7 @@
               </p>
               <button
               type="button"
+              
               class="btn btn-light btn-sm mt-2 mb-2"
             >
               read more..
@@ -119,13 +127,14 @@
         </div>
         <div class="col mb-4">
           <div class="card text-white mb-3 tech" style="max-width: 18rem;">
-            <div class="card-body">
+            <div class="card-body" v-model="techNews">
               <h5 class="card-title">Technologies</h5>
               <p class="card-text"> 
                 In-depth coverage of tech issues and events.
               </p>
               <button
               type="button"
+              @click="fetchTechNews"
               class="btn btn-light btn-sm mt-2 mb-2"
             >
               read more..
@@ -221,7 +230,7 @@
         <div class="col mb-4">
           <div class="card text-white mb-3 politics" style="max-width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Politics</h5>
+              <h5 class="card-title">G</h5>
               <p class="card-text">
                 This is a longer card with supporting text below.
               </p>
@@ -232,16 +241,13 @@
               read more..
             </button>
             </div>
-          </div>
+          </div> 
         </div>
-      </div>
+    </div>
 <!-- footer -->
       <footer>
         <h6></h6>
       </footer>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.0/cjs/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="src/main.js"></script>
   </body>
