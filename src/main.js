@@ -1,4 +1,4 @@
-let apiKey = '14c0ac661fc44e2a9ee0f9c0c9af7ac4';
+const apiKey = '14c0ac661fc44e2a9ee0f9c0c9af7ac4';
 
 const app = new Vue({
   el: "#vue-app",
@@ -8,11 +8,10 @@ const app = new Vue({
     searchWord: '',
     maxPerPage: 20,
     articles: [],
-    categories: [],
+    category: [],
     languages: [],
     countries: [],
     worldNews: [],
-    techNews: [],
     scienceNews: [],
   },
 
@@ -47,28 +46,42 @@ const app = new Vue({
 
 //tech news
 
-    fetchTechNews() {
-      this.apiUrl =
-        "http://newsapi.org/v2/everything?q=" +
-        "technology" +
-        "&apiKey=" +
-        apiKey;
-      this.techNews = '';
+    // fetchTechNews() {
+    //   this.apiUrl =
+    //     "http://newsapi.org/v2/everything?q=" +
+    //     "technology" +
+    //     "&apiKey=" +
+    //     apiKey;
+    //   this.techNews = '';
 
-      this.resetData();
-      this.fetchData();
-      console.log(this.techNews);
-    },
-  
-    
-//top news
-    fetchTopNews() {
-      this.apiUrl =
-        "http://newsapi.org/v2/top-headlines?" +
+    //   this.resetData();
+    //   this.fetchData();
+    //   console.log(this.techNews);
+    // },const NewsAPI = require('newsapi');
+
+    fetchTechNews() {
+      alert("Tech news");
+        this.apiUrl =
+        "http://newsapi.org/v2/sources?category=" +
+        "technology" +
         "&pageSize=" +
         this.maxPerPage +
         "&apiKey=" +
         apiKey;
+
+      this.resetData();
+      this.fetchData();
+    },
+    
+//top news
+    fetchTopNews() {
+      alert("Top news");
+      //sources, q, language, country, category
+      this.apiUrl =
+        "http://newsapi.org/v2/top-headlines?" +
+        "language=en" +
+        "&pageSize=" + this.maxPerPage +
+        "&apiKey=" + apiKey;
       this.searchWord = '';
 
       this.resetData();
@@ -84,17 +97,22 @@ const app = new Vue({
         })
         .catch((error) => {
           console.log(error);
-        });
+        })
     },
 
     fetchLanugage(){
-      this.language = articlesResponse.languages;
-    }
-  },
-
-  mounted() {
-    this.fetchtTopNews();
-  },
-
-
+        let reqLang = new Request(this.apiUrl + "&page=" + this.currentPage);
+        fetch(reqLang)
+          .then((response) => response.json())
+          .then((articlesResponse) => {
+            this.languages = articlesResponse.language;
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+    },
+  // },
+  // mounted() {
+  //   this.fetchtTopNews();
+  }
 });
