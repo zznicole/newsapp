@@ -43,25 +43,6 @@ const app = new Vue({
         this.fetchTopNews();
       }
     },
-//dropdown news
-    fetchDropdownNews() {
-      if (this.searchWord !== '') {
-        this.apiUrl =
-          "http://newsapi.org/v2/everything?q=" +
-          this.searchWord +
-          "&pageSize=" +
-          this.maxPerPage +
-          "&apiKey=" +
-          apiKey;
-
-        this.resetData();
-        this.fetchData();
-      } else {
-        this.fetchTopNews();
-      }
-    },
-
-//dropdown selected news
 
 //tech news
 
@@ -95,7 +76,7 @@ const app = new Vue({
     
 //top news
     fetchTopNews() {
-      alert("Top news");
+      alert("You are reading Top News ");
       //sources, q, language, country, category
       this.apiUrl =
         "http://newsapi.org/v2/top-headlines?" +
@@ -117,7 +98,6 @@ const app = new Vue({
         })
         .catch((error) => {
           // console.log(error);
-          alert('News not found, Please type other keywords.');
         })
     },
 
