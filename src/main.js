@@ -7,12 +7,13 @@ const app = new Vue({
     currentPage: 1,
     searchWord: '',
     maxPerPage: 20,
-    articles: [],
-    category: [],
+    category: ['gen', 'technology', 'science', 'fashion', 'business', 'politics'],
     languages: [],
     countries: [],
+    articles: [],
     worldNews: [],
     scienceNews: [],
+    techNews: [],
   },
 
   methods: {
@@ -42,6 +43,24 @@ const app = new Vue({
         this.fetchTopNews();
       }
     },
+//dropdown news
+    fetchDropdownNews() {
+      if (this.searchWord !== '') {
+        this.apiUrl =
+          "http://newsapi.org/v2/everything?q=" +
+          this.searchWord +
+          "&pageSize=" +
+          this.maxPerPage +
+          "&apiKey=" +
+          apiKey;
+
+        this.resetData();
+        this.fetchData();
+      } else {
+        this.fetchTopNews();
+      }
+    },
+
 //dropdown selected news
 
 //tech news
@@ -60,10 +79,10 @@ const app = new Vue({
     // },const NewsAPI = require('newsapi');
 
     fetchTechNews() {
-      alert("Tech news");
+      
         this.apiUrl =
-        "http://newsapi.org/v2/sources?category=" +
-        "technology" +
+        "http://newsapi.org/v2/sources?" +
+        "category=technology" +
         "&pageSize=" +
         this.maxPerPage +
         "&apiKey=" +
@@ -71,6 +90,7 @@ const app = new Vue({
 
       this.resetData();
       this.fetchData();
+      alert(fetchTechNews());
     },
     
 //top news
@@ -96,7 +116,8 @@ const app = new Vue({
           this.articles = articlesResponse.articles;
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
+          alert('News not found, Please type other keywords.');
         })
     },
 

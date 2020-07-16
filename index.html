@@ -37,55 +37,174 @@
             <button
               @click="fetchSearchNews"
               type="button"
-              class="btn btn-warning btn-lg mt-2 mb-2"
+              class="btn btn-warning btn-lg mt-4 mb-5"
             >
               Search
             </button>
           </div>
           
-          
-<!-- dropdowns  -->
-            <div class="input-groupb d-flex flex-row" id="input-group"></div>
-              <div class="input-group">
-                <select class="custom-select" id="inputGroupSelect01"  v-mode="category">
-                  <option selected>Select a category...</option>
-                  <option value="1">World</option>
-                  <option value="2">Technologies</option>
-                  <option value="3">Science</option>
-                  <option value="4">Sports</option>
-                  <option value="5">Fashion</option>
-                  <option value="6">Business</option>
-                  <option value="8">Politics</option>
-                </select>
+
+ 
+ <!-- category blocks -->       
+            <div class="row row-cols-1 row-cols-md-2 ml-5">
+              <div class="col mb-4">
+                <div class="card text-white mb-3 world shadow rounded" style="max-width: 18rem;">
+                  <div class="card-body ">
+                    <h5 class="card-title deepshd">World</h5>
+                    <p class="card-text deepshd">
+                      News from every corner around the World.
+                    </p>
+                    <button
+                    type="button"
+                    v-on:click="fetchTopNews"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div>
               </div>
-              <div class="input-group">
-                <select class="custom-select" id="inputGroupSelect02"  v-mode="languages">
-                  <option selected >Select a Language...</option>
-                  <option value="1" v-for="language in languages"></option>
-                  <option value="2">{{language}}</option>
-                  <option value="3">Three</option>
-                </select>
+              <div class="col mb-4">
+                <div class="card text-white mb-3 tech" style="max-width: 18rem;">
+                  <div class="card-body" >
+                    <h5 class="card-title">Technologies</h5>
+                    <p class="card-text"> 
+                      In-depth coverage of tech issues and events.
+                    </p>
+                    <button
+                    type="button"
+                    @click="fetchTechNews"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div>
               </div>
-              <div class="input-group">
-                <select class="custom-select" id="inputGroupSelect03"  v-mode="Country">
-                  <option selected>Select a Country...</option>
-                  <option value="1"></option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+              <div class="col mb-4">
+                <div class="card text-white mb-3 science" style="max-width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Science</h5>
+                    <p class="card-text">
+                      This is a longer card with supporting text below.
+                    </p>
+                    <button
+                    type="button"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div>
               </div>
-              <div class="input-group-append">
-                <button
-                @click="fetchSearchNews"
-                type="button"
-                class="btn btn-warning btn-lg mt-2 mb-2"
+              <div class="col mb-4">
+                <div
+                  class="card text-white mb-3 entertainment"
+                  style="max-width: 18rem;"
                 >
-                Search
-                </button>
+                  <div class="card-body">
+                    <h5 class="card-title">Entertainment</h5>
+                    <p class="card-text">
+                      This is a longer card with supporting text below.
+                    </p>
+                    <button
+                    type="button"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div>
               </div>
-            </div>         
-<!-- search result display -->
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 ml-5">
+              <div class="col mb-4">
+                <div class="card text-white mb-3 sport" style="max-width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Sports</h5>
+                    <p class="card-text">
+                      full covering ondga dgergs tgdsfgf gdfg sports.
+                    </p>
+                    <button
+                    type="button"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card text-white mb-3 fashion" style="max-width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Fashion</h5>
+                    <p class="card-text">
+                      This is a longer card with supporting text below.
+                    </p>
+                    <button
+                    type="button"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card text-white mb-3 business" style="max-width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Business</h5>
+                    <p class="card-text">
+                      This is a longer card with supporting text below.
+                    </p>
+                    <button
+                    type="button"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col mb-4">
+                <div class="card text-white mb-3 politics" style="max-width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">G</h5>
+                    <p class="card-text">
+                      This is a longer card with supporting text below.
+                    </p>
+                    <button
+                    type="button"
+                    class="btn btn-light btn-sm mt-2 mb-2"
+                  >
+                    read more..
+                  </button>
+                  </div>
+                </div> 
+              </div>
+          </div>       
+<!-- input search result display -->
             <div v-if="fetchSearchNews" class="card mb-3 mt-5" style="max-width: 1200px;" v-for="(article,index) in articles" :key="index">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img v-if="article.urlToImage" :src="article.urlToImage" class="card-img" alt="The image is related to article below.">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title font-weight-bold">{{article.title}}</h5>
+                    <h6 class="card-text font-italic">
+                      <small
+                        >posted on {{article.publishedAt}} by
+                        {{article.author}}</small
+                      ></h6>
+                    <article class="card-text">{{article.description}}</article>
+                    <a :href="article.url" class="card-link">More Info...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+<!-- techNews result display -->
+            <div v-if="fetchTechNews" class="card mb-3 mt-5" style="max-width: 1200px;" v-for="(article,index) in articles" :key="index">
               <div class="row no-gutters">
                 <div class="col-md-4">
                   <img v-if="article.urlToImage" :src="article.urlToImage" class="card-img" alt="The image is related to article below.">
@@ -106,144 +225,8 @@
             </div>
           </div>
         </div>
-<!-- category blocks -->
-      <div class="row row-cols-1 row-cols-md-2 ml-5">
-        <div class="col mb-4">
-          <div class="card text-white mb-3 world shadow rounded" style="max-width: 18rem;">
-            <div class="card-body ">
-              <h5 class="card-title deepshd">World</h5>
-              <p class="card-text deepshd">
-                News from every corner around the World.
-              </p>
-              <button
-              type="button"
-              
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card text-white mb-3 tech" style="max-width: 18rem;">
-            <div class="card-body" v-model="techNews">
-              <h5 class="card-title">Technologies</h5>
-              <p class="card-text"> 
-                In-depth coverage of tech issues and events.
-              </p>
-              <button
-              type="button"
-              @click="fetchTechNews"
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card text-white mb-3 science" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Science</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below.
-              </p>
-              <button
-              type="button"
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div
-            class="card text-white mb-3 entertainment"
-            style="max-width: 18rem;"
-          >
-            <div class="card-body">
-              <h5 class="card-title">Entertainment</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below.
-              </p>
-              <button
-              type="button"
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row row-cols-1 row-cols-md-2 ml-5">
-        <div class="col mb-4">
-          <div class="card text-white mb-3 sport" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Sports</h5>
-              <p class="card-text">
-                full covering ondga dgergs tgdsfgf gdfg sports.
-              </p>
-              <button
-              type="button"
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card text-white mb-3 fashion" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Fashion</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below.
-              </p>
-              <button
-              type="button"
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card text-white mb-3 business" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Business</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below.
-              </p>
-              <button
-              type="button"
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card text-white mb-3 politics" style="max-width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">G</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below.
-              </p>
-              <button
-              type="button"
-              class="btn btn-light btn-sm mt-2 mb-2"
-            >
-              read more..
-            </button>
-            </div>
-          </div> 
-        </div>
     </div>
+      
 <!-- footer -->
       <footer>
         <h6></h6>
