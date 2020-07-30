@@ -76,7 +76,7 @@ const app = new Vue({
     
 //top news
     fetchTopNews() {
-      alert("You are reading Top News ");
+      alert("click ok for TOP News or Type keywords to read what you'd like to read.");
       //sources, q, language, country, category
       this.apiUrl =
         "http://newsapi.org/v2/top-headlines?" +
